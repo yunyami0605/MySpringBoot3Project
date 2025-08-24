@@ -3,10 +3,12 @@ package com.rookies4.myspringboot.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "customers")
 @Getter @Setter
+@DynamicUpdate
 public class Customer {
     //Primary Key, PK값을 Persistence Provider가 결정해라
     @Id
@@ -21,3 +23,4 @@ public class Customer {
     @Column(nullable = false)
     private String customerName;
 }
+

@@ -33,3 +33,5 @@ build/
 .vscode/
 
 ._sql
+
+/logs/spring.log
