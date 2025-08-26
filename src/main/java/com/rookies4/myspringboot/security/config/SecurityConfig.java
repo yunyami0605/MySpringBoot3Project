@@ -47,7 +47,7 @@ public class SecurityConfig {
                             // api/users/welcome 경로는 인증 없이 접근가능함
                             auth.requestMatchers("/api/users/welcome","/userinfos/new").permitAll()
                                     //  api/users/welcome 경로는 인증이 반드시 필요함
-                                    .requestMatchers("/api/users/**").authenticated()
+                                    .requestMatchers("/api/users/**").authenticated();
                         })
                         // form로그인 페이지는 스프링이 디폴트로 제공하는 페이지를 사용하겠다.
                         .formLogin(withDefaults())
