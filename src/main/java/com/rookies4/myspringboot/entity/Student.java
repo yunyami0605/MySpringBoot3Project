@@ -37,4 +37,8 @@ public class Student {
             mappedBy = "student",
             cascade = CascadeType.ALL)
     private StudentDetail studentDetail;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;
 }

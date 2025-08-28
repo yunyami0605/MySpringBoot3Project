@@ -3,6 +3,7 @@ package com.rookies4.myspringboot.controller.dto;
 import com.rookies4.myspringboot.entity.Student;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +27,9 @@ public class StudentDTO {
         @NotBlank(message = "Student number is required")
         @Size(max = 20, message = "Student number cannot exceed 20 characters")
         private String studentNumber;
+
+        @NotNull(message = "Department ID is required")
+        private Long departmentId;
 
         @Valid
         private StudentDetailDTO detailRequest;
@@ -78,6 +82,24 @@ public class StudentDTO {
                     .name(student.getName())
                     .studentNumber(student.getStudentNumber())
                     .detail(detailResponse)
+                    .build();
+        }
+    }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class SimpleResponse {
+        private Long id;
+        private String name;
+        private String studentNumber;
+
+        public static SimpleResponse fromEntity(Student student) {
+            return SimpleResponse.builder()
+                    .id(student.getId())
+                    .name(student.getName())
+                    .studentNumber(student.getStudentNumber())
                     .build();
         }
     }
